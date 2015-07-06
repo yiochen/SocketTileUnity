@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="70" tileheight="70">
+ <tileset firstgid="1" name="tiles_spritesheet" tilewidth="70" tileheight="70" spacing="1">
+  <image source="../../Sprites/tiles_spritesheet.png" width="852" height="856"/>
+ </tileset>
+ <layer name="ground" width="16" height="16">
+  <data encoding="base64" compression="zlib">
+   eJwrYGBgKBjFo3gUD0nMCMRMQMxMpn4Ao8Butw==
+  </data>
+ </layer>
+ <layer name="item" width="16" height="16">
+  <data encoding="base64" compression="zlib">
+   eJxjYBi+gB+I7UhQL0GhmlH9Q1s/OgClHRkS1A9FAABH0AIo
+  </data>
+ </layer>
+ <layer name="block" width="16" height="16">
+  <data encoding="base64" compression="zlib">
+   eJzTZmBg0KYQkwuQ9XtDMSGArI6a+skBuPS7Q2ljKAYBGxL0wwCyflLsN8aB6aUf3RxcAJd+ayz6DciwnxAYLumPEgwAmYETrw==
+  </data>
+ </layer>
+</map>
