@@ -50,3 +50,6 @@ TagManager:
   - name: block
     uniqueID: 1099032743
     locked: 0
+  - name: character
+    uniqueID: 2199039501
+    locked: 0

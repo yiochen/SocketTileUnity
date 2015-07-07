@@ -86,7 +86,7 @@ public class MapLoader : MonoBehaviour {
                 int y;
                 index2Coor(layer, i, out x, out y);
                 obj.transform.parent = this.transform;
-                obj.transform.localPosition = new Vector3(x, y, obj.transform.localPosition.z);
+                obj.transform.localPosition = new Vector3(x, y, y);
                 
             }
         }

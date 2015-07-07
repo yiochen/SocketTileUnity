@@ -182,8 +182,11 @@ GameObject:
   - 4: {fileID: 1333072696}
   - 212: {fileID: 1333072695}
   - 95: {fileID: 1333072694}
+  - 50: {fileID: 1333072698}
+  - 114: {fileID: 1333072697}
+  - 114: {fileID: 1333072699}
   m_Layer: 0
-  m_Name: walk01
+  m_Name: hero
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -228,7 +231,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: 1099032743
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ddc32bdd0d0271f479625ec79ce5e07b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -244,6 +247,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
+--- !u!114 &1333072697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1333072693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 565944681969e5f4898a8f5c2a2c012b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xMove: 0
+  yMove: 0
+  speed: 1
+  accel: 10
+--- !u!50 &1333072698
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1333072693}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &1333072699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1333072693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 099a991a7eb954546a2ec559163c470f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  horizontalInput: Horizontal
+  verticalInput: Vertical
 --- !u!1001 &1753076416
 Prefab:
   m_ObjectHideFlags: 0
