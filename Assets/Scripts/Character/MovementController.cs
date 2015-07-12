@@ -22,6 +22,7 @@ public class MovementController : MonoBehaviour {
     private Rigidbody2D ridgebd;
     private Vector2 dir;
     private Vector2 tempVel;
+    private IList boosts;
 	// Use this for initialization
 	void Start () {
         ridgebd = this.gameObject.GetComponent<Rigidbody2D>();
@@ -29,11 +30,25 @@ public class MovementController : MonoBehaviour {
         tempVel = Vector2.zero;
 
 	}
+    void Update()
+    {
+        boosts = this.gameObject.GetComponents<SpeedBoost>();
+    }
     void FixedUpdate()
     {
+        var boostedSpeed = this.speed;
+        if (boosts != null)
+        {
+            foreach (SpeedBoost sp in boosts)
+            {
+                boostedSpeed *= sp.Boost;
+            }
+        }
+        
+
         dir = new Vector2(xMove, yMove).normalized;
         tempVel = dir * accel;
-        tempVel = Vector2.ClampMagnitude(tempVel, speed);
+        tempVel = Vector2.ClampMagnitude(tempVel, boostedSpeed);
         this.ridgebd.velocity = tempVel;
     }
     public float XMove

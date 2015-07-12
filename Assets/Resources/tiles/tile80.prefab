@@ -9,6 +9,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 468642}
   - 212: {fileID: 21248942}
+  - 61: {fileID: 6196618}
+  - 114: {fileID: 11459656}
   m_Layer: 0
   m_Name: tile80
   m_TagString: Untagged
@@ -28,6 +30,32 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!61 &6196618
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 180556}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: .5, y: .5}
+  serializedVersion: 2
+  m_Size: {x: .899999976, y: 1}
+--- !u!114 &11459656
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 180556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebcde1c67e11cb34d9257da90afe1c85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TAG: SpeedTrigger
+  boostAmount: 2
 --- !u!212 &21248942
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -64,6 +92,18 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_SortingLayerID
       value: -1094910957
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: boostAmount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Size.x
+      value: .899999976
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
