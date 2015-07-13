@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+[RequireComponent(typeof(Speed))]
 [RequireComponent(typeof(Rigidbody2D))]
 public class MovementController : MonoBehaviour {
     /// <summary>
@@ -10,11 +11,6 @@ public class MovementController : MonoBehaviour {
     [SerializeField][Range(-1.0f,1.0f)]
     private float yMove;
     /// <summary>
-    /// speed define the max speed of the movement;
-    /// </summary>
-    [SerializeField]
-    float speed = 1;
-    /// <summary>
     /// accel define how fast the object change speed
     /// </summary>
     [SerializeField]
@@ -23,20 +19,21 @@ public class MovementController : MonoBehaviour {
     private Vector2 dir;
     private Vector2 tempVel;
     private IList boosts;
+    private Speed speed;
 	// Use this for initialization
 	void Start () {
         ridgebd = this.gameObject.GetComponent<Rigidbody2D>();
         dir = Vector2.zero;
         tempVel = Vector2.zero;
-
+        this.speed = this.gameObject.GetComponent<Speed>();
 	}
-    void Update()
+    void Update() 
     {
         boosts = this.gameObject.GetComponents<SpeedBoost>();
     }
     void FixedUpdate()
     {
-        var boostedSpeed = this.speed;
+        var boostedSpeed = this.speed.sp;
         if (boosts != null)
         {
             foreach (SpeedBoost sp in boosts)
@@ -63,13 +60,6 @@ public class MovementController : MonoBehaviour {
         set
         {
             yMove = value;
-        }
-    }
-    public float Speed
-    {
-        set
-        {
-            speed = value;
         }
     }
 }
