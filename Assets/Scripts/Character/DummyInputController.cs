@@ -2,9 +2,7 @@
 using System.Collections;
 
 [RequireComponent(typeof(MovementController))]
-public class KeyboardController :MonoBehaviour {
-    public string horizontalInput = "Horizontal";
-    public string verticalInput = "Vertical";
+public class DummyInputController : MonoBehaviour {
     private MovementController movement;
     void Start()
     {
@@ -12,10 +10,9 @@ public class KeyboardController :MonoBehaviour {
 
     }
    
-	
 	// Update is called once per frame
 	void Update () {
-        movement.XMove = Input.GetAxisRaw(horizontalInput);
-        movement.YMove = Input.GetAxisRaw(verticalInput);
+        movement.XMove = Random.Range(0, 1);
+        movement.YMove = Random.Range(0, 1);
 	}
 }

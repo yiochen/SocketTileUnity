@@ -3,13 +3,10 @@ using System.Collections;
 
 public class MonsterSpawner : Spawner {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    protected override void InitObject(GameObject obj)
+    {
+        base.InitObject(obj);
+        obj.transform.localPosition = new Vector3(gameObject.transform.localPosition.x, gameObject.transform.localPosition.y, gameObject.transform.localPosition.z);
+        obj.layer = LayerMask.NameToLayer(MapLoader.blockingLayer);
+    }
 }

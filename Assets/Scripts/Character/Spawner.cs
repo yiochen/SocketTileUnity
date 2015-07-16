@@ -7,6 +7,7 @@ public class Spawner : MonoBehaviour {
     //default spawn interval 10s
     public int SpawnInterval = 10;
     private bool spawning = false;
+    
     public bool Spawning
     {
         get
@@ -27,7 +28,10 @@ public class Spawner : MonoBehaviour {
 
         }
     }
-    
+    public void Start()
+    {
+        this.Spawning = true;
+    }
     protected virtual IEnumerator Spawn()
     {
         while (Spawning)
