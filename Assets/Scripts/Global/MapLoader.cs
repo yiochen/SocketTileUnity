@@ -13,11 +13,19 @@ public class MapLayer
 public class MapLoader : MonoBehaviour {
     public static string groundLayer = "ground";
     public static string blockingLayer = "blocking";
+    public static string spawnerLayer = "spawn";
     public TextAsset MapResource;
     private List<GameObject> tilePrefabs = new List<GameObject>();
-    
+    [SerializeField]
+    private GameObject spawner;
+    private static GameObject gObj;
+    public static GameObject getMap()
+    {
+        return gObj;
+    }
     void Awake()
     {
+        gObj = gameObject;
         var jObj=DeserializeMap();
         LoadTilePrefabs();
         LayoutMap(jObj);
@@ -70,27 +78,39 @@ public class MapLoader : MonoBehaviour {
     }
     void LayoutMap(IList<MapLayer> jMap)
     {
-        string layerName="blocking";
+        bool isSpawnLayer = false;
+        string layerName=blockingLayer;
         foreach (MapLayer layer in jMap)
         {
-            
-            if (layer.Name.Equals("ground")) layerName = groundLayer;
-            else layerName = blockingLayer;
+            if (layer.Name.Equals("spawn")) isSpawnLayer = true;
 
             for (int i = 0; i < layer.Data.Count; i++)
             {
                 if (layer.Data[i] == 0) continue;
-                GameObject obj=(GameObject)Instantiate(tilePrefabs[layer.Data[i]], Vector3.zero, Quaternion.identity);
-                obj.layer = LayerMask.NameToLayer(layerName);
-                int x;
-                int y;
-                index2Coor(layer, i, out x, out y);
-                obj.transform.parent = this.transform;
-                obj.transform.localPosition = new Vector3(x, y, y);
-                
+                if (isSpawnLayer) SpawnerTile(layer, i);
+                else LayerTile(layer, i);
             }
         }
-        
     }
-	
+    private GameObject basicTileSetup(GameObject obj, MapLayer layer, int i){
+        int x;
+        int y;
+        index2Coor(layer, i, out x, out y);
+        obj.transform.parent = this.transform;
+        obj.transform.localPosition = new Vector3(x, y, y);
+        return obj;
+    }
+    //Normal setup that only specify the layer and location
+    private GameObject LayerTile(MapLayer layer, int i)
+    {
+        GameObject obj = (GameObject)Instantiate(tilePrefabs[layer.Data[i]], Vector3.zero, Quaternion.identity);
+        
+        return basicTileSetup(obj,layer, i);
+    }
+
+    private GameObject SpawnerTile(MapLayer layer, int i){
+        GameObject obj = (GameObject)Instantiate(spawner, Vector3.zero, Quaternion.identity);
+        return basicTileSetup(obj, layer, i);
+    }
+
 }

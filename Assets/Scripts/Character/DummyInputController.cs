@@ -12,7 +12,7 @@ public class DummyInputController : MonoBehaviour {
    
 	// Update is called once per frame
 	void Update () {
-        movement.XMove = Random.Range(0, 1);
-        movement.YMove = Random.Range(0, 1);
+        movement.XMove = -1;
+        movement.YMove = 0;
 	}
 }

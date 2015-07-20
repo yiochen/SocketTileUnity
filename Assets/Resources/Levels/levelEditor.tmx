@@ -18,4 +18,9 @@
    eJzTZmBg0KYQkwuQ9XtDMSGArI6a+skBuPS7Q2ljKAYBGxL0wwCyflLsN8aB6aUf3RxcAJd+ayz6DciwnxAYLumPEgwAmYETrw==
   </data>
  </layer>
+ <layer name="spawn" width="16" height="16">
+  <data encoding="base64" compression="zlib">
+   eJxjYKAcOBPgYxPHpWYgwFB3/0gH+OKPGPZAg4F0PwDNKAS3
+  </data>
+ </layer>
 </map>

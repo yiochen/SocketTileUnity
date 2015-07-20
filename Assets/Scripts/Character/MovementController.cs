@@ -20,12 +20,14 @@ public class MovementController : MonoBehaviour {
     private Vector2 tempVel;
     private IList boosts;
     private Speed speed;
+    
 	// Use this for initialization
 	void Start () {
         ridgebd = this.gameObject.GetComponent<Rigidbody2D>();
         dir = Vector2.zero;
         tempVel = Vector2.zero;
         this.speed = this.gameObject.GetComponent<Speed>();
+        
 	}
     void Update() 
     {
@@ -33,6 +35,7 @@ public class MovementController : MonoBehaviour {
     }
     void FixedUpdate()
     {
+       
         var boostedSpeed = this.speed.sp;
         if (boosts != null)
         {

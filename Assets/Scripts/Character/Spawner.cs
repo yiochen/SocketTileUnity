@@ -41,5 +41,7 @@ public class Spawner : MonoBehaviour {
             yield return new WaitForSeconds(SpawnInterval);
         }
     }
-    protected virtual void InitObject(GameObject obj){}
+    protected virtual void InitObject(GameObject obj){
+        
+    }
 }
