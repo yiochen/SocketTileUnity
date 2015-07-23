@@ -1,21 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(MovementController))]
+[RequireComponent(typeof(Speed))]
 public class KeyboardController :MonoBehaviour {
     public string horizontalInput = "Horizontal";
     public string verticalInput = "Vertical";
-    private MovementController movement;
+    private Speed speed;
     void Start()
     {
-        movement = GetComponent<MovementController>();
+        speed = GetComponent<Speed>();
 
     }
-   
-	
 	// Update is called once per frame
 	void Update () {
-        movement.XMove = Input.GetAxisRaw(horizontalInput);
-        movement.YMove = Input.GetAxisRaw(verticalInput);
+        speed.XMove = Input.GetAxisRaw(horizontalInput);
+        speed.YMove = Input.GetAxisRaw(verticalInput);
 	}
 }

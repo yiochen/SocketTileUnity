@@ -1,18 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(MovementController))]
+[RequireComponent(typeof(Speed))]
 public class DummyInputController : MonoBehaviour {
-    private MovementController movement;
+    private Speed speed;
     void Start()
     {
-        movement = GetComponent<MovementController>();
+        speed = GetComponent<Speed>();
 
     }
-   
-	// Update is called once per frame
-	void Update () {
-        movement.XMove = -1;
-        movement.YMove = 0;
-	}
+    // Update is called once per frame
+    void Update()
+    {
+        speed.XMove = -1;
+        speed.YMove = 0;
+    }
 }
