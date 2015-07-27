@@ -30,7 +30,7 @@ public class Spawner : MonoBehaviour {
     }
     public void Start()
     {
-        this.Spawning = true;
+        this.Spawning = false;
     }
     protected virtual IEnumerator Spawn()
     {

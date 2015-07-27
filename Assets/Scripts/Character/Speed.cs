@@ -19,14 +19,18 @@ public class Speed : MonoBehaviour {
     public float baseSp = 2;
     public float sp = 2;
     private Vector2 dir;
-
+    public Vector2 Delta = Vector2.zero;
     public Vector2 currentVel;
     
     private IList boosts;
+    [SerializeField]
+    private CollisionHandler colHandler;
     void Start()
     {
+        
         dir = Vector2.zero;
         currentVel = Vector2.zero;
+        
     }
     void Update()
     {
@@ -34,7 +38,6 @@ public class Speed : MonoBehaviour {
     }
     void FixedUpdate()
     {
-
         var boostedSpeed = baseSp;
         if (boosts != null)
         {
@@ -47,6 +50,17 @@ public class Speed : MonoBehaviour {
         dir = new Vector2(xMove, yMove).normalized;
         currentVel = dir * accel;
         currentVel = Vector2.ClampMagnitude(currentVel, sp);
+        if (colHandler != null)
+        {
+            Delta=colHandler.Test(Time.deltaTime);
+            
+           
+        }
+        else
+        {
+            Delta = currentVel * Time.deltaTime;
+        }
+        transform.Translate(Delta);
     }
     public float XMove
     {
