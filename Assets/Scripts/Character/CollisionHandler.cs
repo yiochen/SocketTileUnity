@@ -46,6 +46,8 @@ public class CollisionHandler : MonoBehaviour {
         float y = speed.Delta.y;
         float x = speed.Delta.x;
         RaycastHit2D hitX, hitY;
+        float tempX = 100;
+        float tempY = 100;
         for (int i = 0; i < verticalRays; i++)
         {
             float lerpAmount = (float)i / (float)(verticalRays - 1);
@@ -65,10 +67,12 @@ public class CollisionHandler : MonoBehaviour {
             }
             if (hitY.collider != null)
             {
-                //TODO change this so that y is equal to the closest
-                y = extents.y - hitY.distance;
+                
+                if (hitY.distance<tempY) tempY=hitY.distance;
             }
         }
+        if (tempY < 50) y = Math.Sign(y) * (tempY - extents.y); 
+
         for (int i = 0; i < horizontalRays; i++)
         {
             float lerpAmount = (float)i / (float)(verticalRays - 1);
@@ -86,14 +90,11 @@ public class CollisionHandler : MonoBehaviour {
             }
             if (hitX.collider != null)
             {
-                //TODO change this so that y is equal to the closest
-                x = extents.x - hitX.distance;
+                if (hitX.distance < tempX) tempX = hitX.distance;
             }
         
         }
-        
-      
-        
+        if (tempX < 50) x = Math.Sign(x) * (tempX - extents.x);
         return new Vector2(x,y);
 
     }
