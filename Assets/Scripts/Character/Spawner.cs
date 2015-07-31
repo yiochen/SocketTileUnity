@@ -30,13 +30,13 @@ public class Spawner : MonoBehaviour {
     }
     public void Start()
     {
-        this.Spawning = false;
+        this.Spawning = true;
     }
     protected virtual IEnumerator Spawn()
     {
         while (Spawning)
         {
-            var obj=Instantiate(Prefabs[Random.Range(0, (Prefabs.Count - 1))]);
+            var obj=Instantiate(Prefabs[Random.Range(0, Prefabs.Count )]);
             InitObject(obj);
             yield return new WaitForSeconds(SpawnInterval);
         }

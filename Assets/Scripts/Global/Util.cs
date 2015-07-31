@@ -29,5 +29,16 @@ public class Util {
         else return default(T);
         
     }
+    /// <summary>
+    /// move the the object to the destination with the custom pivot
+    /// </summary>
+    /// <param name="pivot"></param>
+    /// <param name="dest"></param>
+    /// <returns></returns>
+
+    public static void movePivotLocal(GameObject obj, Vector3 pivot, Vector3 dest)
+    {
+        obj.transform.localPosition = dest - pivot;
+    }
 	
 }
