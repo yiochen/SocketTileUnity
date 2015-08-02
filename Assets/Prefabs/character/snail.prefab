@@ -11,8 +11,8 @@ GameObject:
   - 50: {fileID: 5072554}
   - 61: {fileID: 6112446}
   - 114: {fileID: 11402976}
-  - 114: {fileID: 11467980}
   - 114: {fileID: 11497372}
+  - 114: {fileID: 11457660}
   m_Layer: 8
   m_Name: snail
   m_TagString: Enemy
@@ -124,10 +124,9 @@ MonoBehaviour:
   accel: 10
   baseSp: 2
   sp: 2
-  Delta: {x: 0, y: 0}
   currentVel: {x: 0, y: 0}
   colHandler: {fileID: 0}
---- !u!114 &11467980
+--- !u!114 &11457660
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -135,7 +134,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 118388}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 565944681969e5f4898a8f5c2a2c012b, type: 3}
+  m_Script: {fileID: 11500000, guid: a89dbac997d5d9e488fbe9c6b667fac7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &11497372

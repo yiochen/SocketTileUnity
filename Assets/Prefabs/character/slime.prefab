@@ -28,8 +28,8 @@ GameObject:
   - 50: {fileID: 5004788}
   - 61: {fileID: 6156300}
   - 114: {fileID: 11481452}
-  - 114: {fileID: 11411928}
   - 114: {fileID: 11441060}
+  - 114: {fileID: 11435932}
   m_Layer: 8
   m_Name: slime
   m_TagString: Enemy
@@ -108,7 +108,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11411928
+--- !u!114 &11435932
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -116,7 +116,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 188818}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 565944681969e5f4898a8f5c2a2c012b, type: 3}
+  m_Script: {fileID: 11500000, guid: a89dbac997d5d9e488fbe9c6b667fac7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &11441060
@@ -146,7 +146,6 @@ MonoBehaviour:
   accel: 10
   baseSp: 2
   sp: 2
-  Delta: {x: 0, y: 0}
   currentVel: {x: 0, y: 0}
   colHandler: {fileID: 0}
 --- !u!212 &21239836

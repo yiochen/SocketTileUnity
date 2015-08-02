@@ -19,12 +19,24 @@ public class Speed : MonoBehaviour {
     public float baseSp = 2;
     public float sp = 2;
     private Vector2 dir;
-    public Vector2 Delta = Vector2.zero;
     public Vector2 currentVel;
     
     private IList boosts;
     [SerializeField]
     private CollisionHandler colHandler;
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="distance">how far the object can move in one direction before colliding into another object</param>
+    public delegate void OnCollide(Vector3 distance);
+    /// <summary>
+    /// according to the current speed, the object can move this much distance in the next update without collision
+    /// </summary>
+    /// <param name="distance">distance and direction of movement in the next update</param>
+    public delegate void OnCanMove(Vector3 distance);
+    public OnCollide OnCollideHandler;
+    public OnCanMove OnCanMoveHandler;
     void Start()
     {
         
@@ -52,15 +64,22 @@ public class Speed : MonoBehaviour {
         currentVel = Vector2.ClampMagnitude(currentVel, sp);
         if (colHandler != null)
         {
-            Delta=colHandler.Test(Time.deltaTime);
-            
-           
+            Vector2 distance;
+            if (colHandler.Test(currentVel * Time.deltaTime, out distance))
+            {
+                //collided
+                if (OnCollideHandler != null) OnCollideHandler(distance);
+            }
+            else
+            {
+                if (OnCanMoveHandler != null) OnCanMoveHandler(distance);
+            }
         }
         else
         {
-            Delta = currentVel * Time.deltaTime;
+            if (OnCanMoveHandler != null) OnCanMoveHandler(currentVel * Time.deltaTime);
         }
-        transform.Translate(Delta);
+        
     }
     public float XMove
     {

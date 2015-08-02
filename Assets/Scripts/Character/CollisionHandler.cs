@@ -2,20 +2,14 @@
 using System.Collections;
 using System;
 
-[RequireComponent(typeof(Speed))]
 public class CollisionHandler : MonoBehaviour {
-    Speed speed;
+    
     [SerializeField]
     private float margin = 0.2f;
     int horizontalRays = 8;
     int verticalRays = 8;
 
-    void Awake()
-    {
-        this.speed = gameObject.GetComponent<Speed>();
-    }
 
-	
 	
 
     RaycastHit2D Raycast(Vector2 start, Vector2 dir, float distance)
@@ -31,7 +25,7 @@ public class CollisionHandler : MonoBehaviour {
     }
    
     //draw the ray and test
-    public Vector2 Test(float deltaTime)
+    public bool Test(Vector2 attemptMove, out Vector2 canMove)
     {
         //Rect box=new Rect()
         
@@ -42,12 +36,21 @@ public class CollisionHandler : MonoBehaviour {
         Vector2 verticalHalf=new Vector2(0,bounds.extents.y * (1 - margin));
         //Vector2 left = center - horizontalHalf;
        // Vector2 right=center+
-        speed.Delta = speed.currentVel * deltaTime;
-        float y = speed.Delta.y;
+        //speed.Delta = speed.currentVel * deltaTime;
+
+        /*float y = speed.Delta.y;
         float x = speed.Delta.x;
         RaycastHit2D hitX, hitY;
         float tempX = 100;
+        float tempY = 100;*/
+
+        float x = attemptMove.x;
+        float y = attemptMove.y;
+        RaycastHit2D hitX, hitY;
+        float tempX = 100;
         float tempY = 100;
+        bool collide = false;
+
         for (int i = 0; i < verticalRays; i++)
         {
             float lerpAmount = (float)i / (float)(verticalRays - 1);
@@ -67,7 +70,7 @@ public class CollisionHandler : MonoBehaviour {
             }
             if (hitY.collider != null)
             {
-                
+                collide = true;
                 if (hitY.distance<tempY) tempY=hitY.distance;
             }
         }
@@ -90,13 +93,14 @@ public class CollisionHandler : MonoBehaviour {
             }
             if (hitX.collider != null)
             {
+                collide = true;
                 if (hitX.distance < tempX) tempX = hitX.distance;
             }
         
         }
         if (tempX < 50) x = Math.Sign(x) * (tempX - extents.x);
-        return new Vector2(x,y);
-
+        canMove=new Vector3(x,y);
+        return collide;
     }
 
 }

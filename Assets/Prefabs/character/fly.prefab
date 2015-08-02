@@ -11,8 +11,8 @@ GameObject:
   - 50: {fileID: 5032878}
   - 61: {fileID: 6176724}
   - 114: {fileID: 11497352}
-  - 114: {fileID: 11475252}
   - 114: {fileID: 11452078}
+  - 114: {fileID: 11494500}
   m_Layer: 8
   m_Name: fly
   m_TagString: Enemy
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc2b8e449393e2469a09ae78423852a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11475252
+--- !u!114 &11494500
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -127,7 +127,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 158432}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 565944681969e5f4898a8f5c2a2c012b, type: 3}
+  m_Script: {fileID: 11500000, guid: a89dbac997d5d9e488fbe9c6b667fac7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &11497352
@@ -146,7 +146,6 @@ MonoBehaviour:
   accel: 10
   baseSp: 2
   sp: 2
-  Delta: {x: 0, y: 0}
   currentVel: {x: 0, y: 0}
   colHandler: {fileID: 0}
 --- !u!212 &21231806
