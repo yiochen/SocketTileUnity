@@ -12,10 +12,10 @@ public class CollisionHandler : MonoBehaviour {
 
 	
 
-    RaycastHit2D Raycast(Vector2 start, Vector2 dir, float distance)
+    RaycastHit2D Raycast(Vector2 start, Vector2 dir, float distance, int mask)
     {
 
-        RaycastHit2D hit=Physics2D.Raycast(start, dir, distance,(1<<LayerMask.NameToLayer("blocking")));
+        RaycastHit2D hit=Physics2D.Raycast(start, dir, distance,mask);
         if (hit.collider != null)
         {
            
@@ -23,9 +23,12 @@ public class CollisionHandler : MonoBehaviour {
         Debug.DrawLine(start, start + (dir * distance), Color.red);
         return hit;
     }
-   
-    //draw the ray and test
     public bool Test(Vector2 attemptMove, out Vector2 canMove)
+    {
+        return Test(attemptMove, out canMove, 1<<LayerMask.NameToLayer("blocking"));
+    }
+    //draw the ray and test
+    public bool Test(Vector2 attemptMove, out Vector2 canMove, int mask)
     {
         //Rect box=new Rect()
         
@@ -59,13 +62,13 @@ public class CollisionHandler : MonoBehaviour {
             if (y > 0)
             {
 
-                hitY = Raycast(origin, Vector2.up, extents.y + y);
+                hitY = Raycast(origin, Vector2.up, extents.y + y,mask);
 
             }
             else
             {
 
-                hitY = Raycast(origin, Vector2.down, extents.y - y);
+                hitY = Raycast(origin, Vector2.down, extents.y - y,mask);
 
             }
             if (hitY.collider != null)
@@ -83,12 +86,12 @@ public class CollisionHandler : MonoBehaviour {
             if (x > 0)
             {
 
-                hitX = Raycast(origin, Vector2.right, extents.x + x);
+                hitX = Raycast(origin, Vector2.right, extents.x + x,mask);
 
             }
             else
             {
-                hitX = Raycast(origin, Vector2.left, extents.x - x);
+                hitX = Raycast(origin, Vector2.left, extents.x - x,mask);
 
             }
             if (hitX.collider != null)
